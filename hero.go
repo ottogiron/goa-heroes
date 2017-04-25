@@ -14,7 +14,7 @@ type HeroController struct {
 
 // NewHeroController creates a hero controller.
 func NewHeroController(service *goa.Service, heroService *services.HeroService) *HeroController {
-	return &HeroController{Controller: service.NewController("HeroController")}
+	return &HeroController{Controller: service.NewController("HeroController"), heroService: heroService}
 }
 
 // Create runs the create action.

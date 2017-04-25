@@ -3,12 +3,14 @@ package main
 import (
 	"github.com/goadesign/goa"
 	"github.com/ottogiron/goa-heroes/app"
+	"github.com/ottogiron/goa-heroes/services"
 )
 
 func main() {
 	service := goa.New("heroes")
 
-	heroController := NewHeroController(service)
+	heroService := &services.HeroService{}
+	heroController := NewHeroController(service, heroService)
 
 	app.MountHeroController(service, heroController)
 

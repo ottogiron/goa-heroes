@@ -10,6 +10,16 @@ var _ = API("comics", func() { // API defines the microservice endpoint and
 	Description("A simple goa service") // and exactly one API definition appearing in
 	Scheme("http")                      // the design.
 	Host("localhost:8080")
+
+	ResponseTemplate(Created, func(pattern string) {
+		Description("Resource created")
+		Status(201)
+		Headers(func() {
+			Header("Location", String, "href to created resource", func() {
+				Pattern(pattern)
+			})
+		})
+	})
 })
 
 var _ = Resource("hero", func() { // Resources group related API endpoints
@@ -55,11 +65,10 @@ var HeroMedia = MediaType("application/vnd.goa.example.heroe+json", func() {
 	Attributes(func() { // Attributes define the media type shape.
 		Attribute("id", Integer, "Unique heroe ID")
 		Attribute("name", String, "Name of hero")
-		Required("id", "href", "name")
+		Required("id", "name")
 	})
 	View("default", func() { // View defines a rendering of the media type.
-		Attribute("id")   // Media types may have multiple views and must
-		Attribute("href") // have a "default" view.
+		Attribute("id") // Media types may have multiple views and must
 		Attribute("name")
 	})
 })

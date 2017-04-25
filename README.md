@@ -8,20 +8,20 @@ Example of a simple GOA API. Implements an API with information about comics her
 ### Hero by ID
 
 ```
-GET /heroes-api/heroes/:id
+GET /heroes/:id
 ```
 
 ### List of available heroes
 
 ```
- GET /heroes-api/heroes
+ GET /heroes
 ```
 
 
 ###  Create a new Hero
 
 ```
-POST /heroes-api/heroes 
+POST /heroes 
 {
     name: <string>
 }

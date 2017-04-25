@@ -5,13 +5,13 @@ Example of a simple GOA API. Implements an API with information about comics her
 ## Implemented Endpoints
 
 
-### Returns a hero by ID
+### Hero by ID
 
 ```
 GET /heroes-api/heroes/:id
 ```
 
-### Returns the list of available heroes
+### List of available heroes
 
 ```
  GET /heroes-api/heroes

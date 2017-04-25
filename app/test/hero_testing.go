@@ -171,7 +171,7 @@ func CreateHeroCreated(t goatest.TInterface, ctx context.Context, service *goa.S
 // It returns the response writer so it's possible to inspect the response headers and the media type struct written to the response.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func ListHeroOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.HeroController) (http.ResponseWriter, app.GoaExampleHeroeCollection) {
+func ListHeroOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.HeroController) (http.ResponseWriter, app.HeroCollection) {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -218,12 +218,12 @@ func ListHeroOK(t goatest.TInterface, ctx context.Context, service *goa.Service,
 	if rw.Code != 200 {
 		t.Errorf("invalid response status code: got %+v, expected 200", rw.Code)
 	}
-	var mt app.GoaExampleHeroeCollection
+	var mt app.HeroCollection
 	if resp != nil {
 		var ok bool
-		mt, ok = resp.(app.GoaExampleHeroeCollection)
+		mt, ok = resp.(app.HeroCollection)
 		if !ok {
-			t.Fatalf("invalid response media: got %+v, expected instance of app.GoaExampleHeroeCollection", resp)
+			t.Fatalf("invalid response media: got %+v, expected instance of app.HeroCollection", resp)
 		}
 		_err = mt.Validate()
 		if _err != nil {
@@ -296,7 +296,7 @@ func ShowHeroNotFound(t goatest.TInterface, ctx context.Context, service *goa.Se
 // It returns the response writer so it's possible to inspect the response headers and the media type struct written to the response.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func ShowHeroOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.HeroController, heroID int) (http.ResponseWriter, *app.GoaExampleHeroe) {
+func ShowHeroOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.HeroController, heroID int) (http.ResponseWriter, *app.Hero) {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -344,12 +344,12 @@ func ShowHeroOK(t goatest.TInterface, ctx context.Context, service *goa.Service,
 	if rw.Code != 200 {
 		t.Errorf("invalid response status code: got %+v, expected 200", rw.Code)
 	}
-	var mt *app.GoaExampleHeroe
+	var mt *app.Hero
 	if resp != nil {
 		var ok bool
-		mt, ok = resp.(*app.GoaExampleHeroe)
+		mt, ok = resp.(*app.Hero)
 		if !ok {
-			t.Fatalf("invalid response media: got %+v, expected instance of app.GoaExampleHeroe", resp)
+			t.Fatalf("invalid response media: got %+v, expected instance of app.Hero", resp)
 		}
 		_err = mt.Validate()
 		if _err != nil {

@@ -16,16 +16,16 @@ import (
 
 // A comic hero (default view)
 //
-// Identifier: application/vnd.goa.example.heroe+json; view=default
-type GoaExampleHeroe struct {
+// Identifier: application/vnd.hero+json; view=default
+type Hero struct {
 	// Unique heroe ID
 	ID int `form:"id" json:"id" xml:"id"`
 	// Name of hero
 	Name string `form:"name" json:"name" xml:"name"`
 }
 
-// Validate validates the GoaExampleHeroe media type instance.
-func (mt *GoaExampleHeroe) Validate() (err error) {
+// Validate validates the Hero media type instance.
+func (mt *Hero) Validate() (err error) {
 
 	if mt.Name == "" {
 		err = goa.MergeErrors(err, goa.MissingAttributeError(`response`, "name"))
@@ -33,13 +33,13 @@ func (mt *GoaExampleHeroe) Validate() (err error) {
 	return
 }
 
-// GoaExampleHeroeCollection is the media type for an array of GoaExampleHeroe (default view)
+// HeroCollection is the media type for an array of Hero (default view)
 //
-// Identifier: application/vnd.goa.example.heroe+json; type=collection; view=default
-type GoaExampleHeroeCollection []*GoaExampleHeroe
+// Identifier: application/vnd.hero+json; type=collection; view=default
+type HeroCollection []*Hero
 
-// Validate validates the GoaExampleHeroeCollection media type instance.
-func (mt GoaExampleHeroeCollection) Validate() (err error) {
+// Validate validates the HeroCollection media type instance.
+func (mt HeroCollection) Validate() (err error) {
 	for _, e := range mt {
 		if e != nil {
 			if err2 := e.Validate(); err2 != nil {

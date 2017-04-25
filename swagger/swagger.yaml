@@ -15,7 +15,7 @@ definitions:
     - name
     title: CreateHeroPayload
     type: object
-  GoaExampleHeroe:
+  Hero:
     description: A comic hero (default view)
     example:
       id: 7.810761e+18
@@ -33,20 +33,18 @@ definitions:
     required:
     - id
     - name
-    title: 'Mediatype identifier: application/vnd.goa.example.heroe+json; view=default'
+    title: 'Mediatype identifier: application/vnd.hero+json; view=default'
     type: object
-  GoaExampleHeroeCollection:
-    description: GoaExampleHeroeCollection is the media type for an array of GoaExampleHeroe
-      (default view)
+  HeroCollection:
+    description: HeroCollection is the media type for an array of Hero (default view)
     example:
     - id: 7.810761e+18
       name: Placeat excepturi perspiciatis veritatis.
     - id: 7.810761e+18
       name: Placeat excepturi perspiciatis veritatis.
     items:
-      $ref: '#/definitions/GoaExampleHeroe'
-    title: 'Mediatype identifier: application/vnd.goa.example.heroe+json; type=collection;
-      view=default'
+      $ref: '#/definitions/Hero'
+    title: 'Mediatype identifier: application/vnd.hero+json; type=collection; view=default'
     type: array
   error:
     description: Error response media type (default view)
@@ -96,12 +94,12 @@ paths:
       description: Retrieve all heroes
       operationId: hero#list
       produces:
-      - application/vnd.goa.example.heroe+json; type=collection
+      - application/vnd.hero+json; type=collection
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/GoaExampleHeroeCollection'
+            $ref: '#/definitions/HeroCollection'
       schemes:
       - http
       summary: list hero
@@ -146,12 +144,12 @@ paths:
         required: true
         type: integer
       produces:
-      - application/vnd.goa.example.heroe+json
+      - application/vnd.hero+json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/GoaExampleHeroe'
+            $ref: '#/definitions/Hero'
         "404":
           description: Not Found
       schemes:
@@ -170,7 +168,7 @@ responses:
   OK:
     description: OK
     schema:
-      $ref: '#/definitions/GoaExampleHeroe'
+      $ref: '#/definitions/Hero'
 schemes:
 - http
 swagger: "2.0"

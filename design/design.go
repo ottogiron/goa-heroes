@@ -60,7 +60,7 @@ var _ = Resource("hero", func() { // Resources group related API endpoints
 })
 
 // HeroMedia defines the media type used to render heroes.
-var HeroMedia = MediaType("application/vnd.goa.example.heroe+json", func() {
+var HeroMedia = MediaType("application/vnd.hero+json", func() {
 	Description("A comic hero")
 	Attributes(func() { // Attributes define the media type shape.
 		Attribute("id", Integer, "Unique heroe ID")

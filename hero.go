@@ -32,7 +32,7 @@ func (c *HeroController) List(ctx *app.ListHeroContext) error {
 	// Put your logic here
 
 	// HeroController_List: end_implement
-	res := app.GoaExampleHeroeCollection{}
+	res := app.HeroCollection{}
 	return ctx.OK(res)
 }
 
@@ -43,6 +43,6 @@ func (c *HeroController) Show(ctx *app.ShowHeroContext) error {
 	// Put your logic here
 
 	// HeroController_Show: end_implement
-	res := &app.GoaExampleHeroe{}
+	res := &app.Hero{}
 	return ctx.OK(res)
 }

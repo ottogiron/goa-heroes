@@ -104,10 +104,10 @@ func NewListHeroContext(ctx context.Context, r *http.Request, service *goa.Servi
 }
 
 // OK sends a HTTP response with status code 200.
-func (ctx *ListHeroContext) OK(r GoaExampleHeroeCollection) error {
-	ctx.ResponseData.Header().Set("Content-Type", "application/vnd.goa.example.heroe+json; type=collection")
+func (ctx *ListHeroContext) OK(r HeroCollection) error {
+	ctx.ResponseData.Header().Set("Content-Type", "application/vnd.hero+json; type=collection")
 	if r == nil {
-		r = GoaExampleHeroeCollection{}
+		r = HeroCollection{}
 	}
 	return ctx.ResponseData.Service.Send(ctx.Context, 200, r)
 }
@@ -142,8 +142,8 @@ func NewShowHeroContext(ctx context.Context, r *http.Request, service *goa.Servi
 }
 
 // OK sends a HTTP response with status code 200.
-func (ctx *ShowHeroContext) OK(r *GoaExampleHeroe) error {
-	ctx.ResponseData.Header().Set("Content-Type", "application/vnd.goa.example.heroe+json")
+func (ctx *ShowHeroContext) OK(r *Hero) error {
+	ctx.ResponseData.Header().Set("Content-Type", "application/vnd.hero+json")
 	return ctx.ResponseData.Service.Send(ctx.Context, 200, r)
 }
 

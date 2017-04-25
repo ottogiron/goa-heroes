@@ -26,3 +26,10 @@ POST /heroes-api/heroes
     name: <string>
 }
 ```
+
+
+## Generate Goa  Code 
+
+```bash
+goagen bootstrap -d github.com/ottogiron/goa-heroes/design
+```
